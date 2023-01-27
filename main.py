@@ -1,19 +1,20 @@
 from tkinter import *
 
+
 # function to watermark image
 def watermark_img():
     print(f"The watermark text is: {watermark_textbox.get()}")
     print(f"The Path of the image is: {image_path_textbox.get()}")
     print(f"The watermark text is: {conv_image_path_textbox.get()}")
 
+
 # tkinter config
 window = Tk()
 window.title("Image Watermarking Application")
-window.minsize(width=500, height=300)
-
+window.minsize(width=400, height=200)
 
 my_label = Label(text="Image Watermarking Application", font=("Arial", 24, "bold"))
-my_label.grid(column=0, row=0, columnspan=3)
+my_label.grid(column=0, row=0, columnspan=2)
 
 watermark_text_label = Label(text="Watermark text: ")
 watermark_text_label.grid(column=0, row=1)
