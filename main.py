@@ -1,11 +1,23 @@
 from tkinter import *
+from PIL import Image, ImageDraw, ImageFont, ImageFile
 
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # function to watermark image
 def watermark_img():
+    img = Image.open(f'{image_path_textbox.get()}')
+    draw = ImageDraw.Draw(img)
+    text = watermark_textbox.get()
+    font = ImageFont.truetype('./arial.ttf', 86)
+    textwidth, textheight = draw.textsize(text, font)
+    width, height = img.size
+    x = width / 2 - textwidth / 2
+    y = height - textheight - 300
+    draw.text((x, y), text, font=font)
+    img.save(f'{conv_image_path_textbox.get()}-watermarked-image.png')
     print(f"The watermark text is: {watermark_textbox.get()}")
     print(f"The Path of the image is: {image_path_textbox.get()}")
-    print(f"The watermark text is: {conv_image_path_textbox.get()}")
+    print(f"The path of the saved file is: {conv_image_path_textbox.get()}")
 
 
 # tkinter config
